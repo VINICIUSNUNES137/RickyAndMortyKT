@@ -5,7 +5,9 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
@@ -14,7 +16,9 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import br.senai.sp.jandira.rickyandmorty.model.CharacterList
 import br.senai.sp.jandira.rickyandmorty.model.Info
 import br.senai.sp.jandira.rickyandmorty.service.RetrofitFactory
@@ -82,6 +86,15 @@ fun Greeting(name: String) {
         }) {
             Text(text = "List all Characters")
         }
+        Row() {
+            Text(text = "TOTAL: ", modifier = Modifier.padding(32.dp),fontWeight = FontWeight(800))
+            Text(text = "${info.count}")
+        }
+        Row() {
+            Text(text = "PAGES: ", fontWeight = FontWeight(800))
+            Text(text = "${info.pages}")
+        }
+
         LazyColumn() {
             items(results) {
                 Column() {
